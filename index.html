@@ -1081,7 +1081,7 @@ async function testEmail(){
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
 //INIT
-ejConfig = JSON.parse(localStorage.getItem('fi_emailjs')||'{}');
+ejConfig = JSON.parse(localStorage.getItem('fi_emailjs')||JSON.stringify({pubkey:'4lCf6eV8fgkh25Kk-',service_15lvjlh',template:'mlvzumr'}));
 initEmailJS();
 applySiteData();
 renderReviews();
