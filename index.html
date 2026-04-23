@@ -1070,28 +1070,21 @@ function saveEmailJS(){
   showToast('✅ Configuration email enregistrée !');
 }
 async function testEmail(){
+  if(!ejConfig.pubkey||!ejConfig.service||!ejConfig.template){showToast('⚠️ Configurez d\'abord EmailJS.');return;}
   try{
-    await emailjs.send(ejConfig.service, ejConfig.template, {
-      prenom:'TEST', nom:'Fast Install', telephone:'06.63.27.83.06',
-      email:'fast.install.meubles@gmail.com', service:'Test de configuration',
-      message:'Ceci est un email de test.', date:new Date().toLocaleString('fr-FR')
-    });
-    showToast('✅ Email de test envoyé !');
-  } catch(e){ showToast('❌ Erreur : '+(e.text||e)+'. Vérifiez vos clés.'); }
+    await emailjs.send(ejConfig.service,ejConfig.template,{prenom:'TEST',nom:'Fast Install',telephone:'06.63.27.83.06',email:'fast.install.meubles@gmail.com',service:'Test de configuration',message:'Ceci est un email de test.',date:new Date().toLocaleString('fr-FR')});
+    showToast('✅ Email de test envoyé sur fast.install.meubles@gmail.com !');
+  }catch(e){showToast('❌ Erreur : '+e.text+'. Vérifiez vos clés.');}
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click',function(e){
-    var t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
-// ═══ INIT ═══
-initEmailJS();
+// INIT
 applySiteData();
 renderReviews();
 applyTarifs();
+initEmailJS();
 </script>
 </body>
 </html>
