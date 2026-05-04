@@ -865,7 +865,7 @@ async function envoyerDevis(){
   devisListe.push(d);sv('fi_devis',devisListe);
   // Envoi email - toujours avec les clés déjà configurées
   try{
-    await emailjs.send('service_15lvjlh','template_9vduxj9',{prenom,nom,telephone:tel,email:email||'Non renseigné',service,message:msg||'—',date:new Date().toLocaleString('fr-FR')},{publicKey:'4ICf6eV8fgkh25Kk'});
+    await emailjs.send('service_15lvjlh','template_9vduxj9',{prenom,nom,telephone:tel,email:email||'Non renseigné',service,message:msg||'—',date:new Date().toLocaleString('fr-FR')},{publicKey:'4lCf6eV8fgkh25Kk-'});
     toast('\u2705 Demande envoy\u00e9e\u00a0! Vous allez recevoir un appel rapidement.');
   }catch(emailErr){
     console.error('EmailJS:',emailErr);
